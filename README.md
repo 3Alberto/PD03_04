@@ -1,3 +1,3 @@
 # PD03_04
 
-#Archivo del dataset
+#Archivo del dataset en formato JSON
