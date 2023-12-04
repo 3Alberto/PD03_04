@@ -49,6 +49,9 @@ Resultado del analisis: Muestra si el paciente esta o no enfermo de lo que se es
 
 
 # c. Descripción	del	diccionario	de	datos	del	dataset
+Debido a que trabajamos con CouchDB y este tiene bastante encapsulamiento y modularidad, no hay una forma especifica para agregar los documentos, a continuacion moestraremos un ejemplo del formato que llevan los JSON de nuestra DB y un ejemplo tomada de la misma DB
+![Alt text](imagenes/jason111.jpeg)
+![Alt text](imagenes/json2.jpeg)
 
 # d. Descripción	del	modelado	del	dataset	según	la	BD	NoSQL
 
