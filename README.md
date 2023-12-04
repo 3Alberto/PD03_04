@@ -1,5 +1,5 @@
 # PD03_04 Modelado de Datos
-# E04:	CouchDB Integrantes:Rogerio Emmanuel Canto Romero, Diego Enrique Duran Pavia, Raul Alberto Kumul Varguez
+# E04:	CouchDB Integrantes: Rogerio Emmanuel Canto Romero, Diego Enrique Duran Pavia, Raul Alberto Kumul Varguez.
 
 
 # Haciendo	uso	de	un	repositorio	de	Github,	documente	lo	siguiente:
@@ -7,27 +7,28 @@
 Se puede localizar en nuestro repositorio  "PD03_04" el dataset original por el nombre de:
 "Disease_symptom_and_patient_profile_dataset.csv" 
 
-# El data set:
-El dataset fue rescatado de Kaggle 
+# El dataset:
+El dataset fue rescatado de Kaggle:
 ![Imagenweb](imagenes/Kaggle.png)
-Se decidio utilizar este archivo en especifico, ya que se notaba bastante ordenado y comprensible, y consideramos que seria facil trabajar con el.
+Se decidió utilizar este archivo en específico, ya que se notaba bastante ordenado y comprensible, y consideramos que sería fácil trabajar con él.
 
 
 
-como sabemos los archivos CSV son un tipo de documento en formato abierto sencillo para representar datos en forma de tabla, en las que las columnas se separan por comas y las filas por saltos de línea, pero una de las particularidades de nuestra base de datos "Couch DB" es que solo maneja archivos en formato JSON, por lo que el primer paso es convertir el dataset de csv a json
+Como sabemos los archivos CSV son un tipo de documento en formato abierto sencillo para representar datos en forma de tabla, en las que las columnas se separan por comas y las filas por saltos de línea, pero una de las particularidades de nuestra base de datos "Couch DB" es que solo maneja archivos en formato JSON, por lo que el primer paso es convertir el dataset de csv a JSON
 
 # Convertin a JSON
 ![Imagenweb](imagenes/BING1.jpeg)
 
-Usando La herramienta de inteligencia artificial de BING se genero un codigo en python que nos permite transformar un archivo de Excel a json (el codigo se puede encontrar en nuestro repositorio por el nombre de "Excel-To-JSON.py"), como habiamos mencionado anteriormente nuestro data set se encuentra en formato csv, pero por las propiedades del mismo puede ser interpretado como un excel, por lo que el codigo nos fue útil para conseguir que nuestro dataset este en formato JSON y listo para ser subido a nuestra base de datos (En CouchSB).
+Usando La herramienta de inteligencia artificial de BING se generó un código en Python que nos permite transformar un archivo de Excel a JSON (el código se puede encontrar en nuestro repositorio por el nombre de "Excel-To-JSON.py"), como habíamos mencionado anteriormente nuestro data set se encuentra en formato csv, pero por las propiedades del mismo puede ser interpretado como un Excel, por lo que el código nos fue útil para conseguir que nuestro dataset este en formato JSON y listo para ser subido a nuestra base de datos (En CouchDB).
 
 ![Imagenweb](imagenes/exel-json.jpeg)
 
 # b. Descripción	del	dataset
 ![Imagenweb](imagenes/dataset.jpeg)
-El Data set cuanta con los datos de 349 pacientes, dentro de los que se recopila la siguiente informacion:
 
-Enfermedad: El nombre de la enfermedad o condicion medica.
+El Data set cuenta con los datos de 349 pacientes, dentro de los que se recopila la siguiente información:
+
+Enfermedad: El nombre de la enfermedad o condición medica.
 
 Fiebre: Indica si el paciente tiene o no fiebre.
 
@@ -41,15 +42,17 @@ Edad: La edad en años del paciente.
 
 Sexo: Masculino o femenino.
 
-Presion arterial: Indica el nivel de la presion arterial del px.
+Presión arterial: Indica el nivel de la presión arterial del paciente.
 
 Nivel de colesterol: Nivel de colesterol del paciente.
 
-Resultado del analisis: Muestra si el paciente esta o no enfermo de lo que se esperaba.
+Resultado del análisis: Muestra si el paciente está o no enfermo de lo que se esperaba.
+
 
 
 # c. Descripción	del	diccionario	de	datos	del	dataset
-Debido a que trabajamos con CouchDB y este tiene bastante encapsulamiento y modularidad, no hay una forma especifica para agregar los documentos, a continuacion moestraremos un ejemplo del formato que llevan los JSON de nuestra DB y un ejemplo tomada de la misma DB
+Debido a que trabajamos con CouchDB y este tiene bastante encapsulamiento y modularidad, no hay una forma específica para agregar los documentos, a continuación mostraremos un ejemplo del formato que llevan los JSON de nuestra DB y un ejemplo tomada de la misma DB
+
 ![Alt text](imagenes/jason111.jpeg)
 ![Alt text](imagenes/json2.jpeg)
 
