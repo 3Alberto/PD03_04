@@ -17,6 +17,19 @@ Se decidio utilizar este archivo en especifico, ya que se notaba bastante ordena
 como sabemos los archivos CSV son un tipo de documento en formato abierto sencillo para representar datos en forma de tabla, en las que las columnas se separan por comas y las filas por saltos de línea, pero una de las particularidades de nuestra base de datos "Couch DB" es que solo maneja archivos en formato JSON, por lo que el primer paso es convertir el dataset de csv a json
 
 # b. Descripción	del	dataset
+imagenes/dataset.jpeg
+![Imagenweb](imagenes/dataset.jpeg)
+El Data set cuanta con los datos de 349 pacientes, dentro de los que se recopila la siguiente informacion:
+Enfermedad: El nombre de la enfermedad o condicion medica.
+Fiebre: Indica si el paciente tiene o no fiebre.
+Tos: Indica si el paciente tiene o no tos.
+Fatiga: Indica si el paciente presenta o no fatiga.
+Dificultad para respirar: Indica si el paciente tiene o no dificultades para respirar.
+Edad: La edad en años del paciente.
+Sexo: Masculino o femenino.
+Presion arterial: Indica el nivel de la presion arterial del px.
+Nivel de colesterol: Nivel de colesterol del paciente.
+Resultado del analisis: Muestra si el paciente esta o no enfermo de lo que se esperaba.
 
 # c. Descripción	del	diccionario	de	datos	del	dataset
 
