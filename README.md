@@ -53,8 +53,23 @@ Resultado del analisis: Muestra si el paciente esta o no enfermo de lo que se es
 # d. Descripción	del	modelado	del	dataset	según	la	BD	NoSQL
 
 # e. Descripción	de	la	BD	NoSQL	y	las	herramientas	que	se	utilizaron.
+La base de datos NoSQL se centra en la relación entre varias enfermedades, los síntomas asociados, y los perfiles de pacientes. Es una herramienta valiosa para el análisis de datos en el campo de la medicina. 
+
+•	Formato de Datos: Al estar en JSON, la base de datos es fácilmente accesible y manipulable, lo que permite realizar análisis y filtrar información de manera eficiente.
+
+•	Potencial de Análisis Estadístico y de Datos: La estructura de la base de datos facilita la realización de análisis estadísticos, como la identificación de tendencias, correlaciones entre síntomas y enfermedades, y la evaluación de factores de riesgo.
+
+Por otro lado, para la creación de esta base de datos se utilizó un programa en Python (subidor.py) para subir los documentos en formato JSON a la base que está en CouchDB, el código fue generado por la inteligencia artificial Bing, únicamente se modificaron la dirección de origen archivo que se va a subir y la dirección de destino a la base de datos. También se utilizo Visual Studio Code para realizar dichos cambios y verificar que todo funcione de manera adecuada.
 
 # f. Descripción	de	la	importación	de	sus	datos.
+Para esto ya debimos de haber creado nuestra base de datos.
+Después, como ya habíamos comentado en el inciso e, generamos un código con la inteligencia artificial Bing, una vez generado el código y lo modificamos para poner nuestro usuario y contraseña de la base de datos procedemos a correr el codigo en el Visual studio code. 
+
+![Alt text](imagenes/importacion1.jpeg)
+
+Esperamos un momento a que se suban los archivos y luego observamos nuestra base de datos con los archivos.
+
+![Alt text](imagenes/importacion2.jpeg)
 
 # g. Definir	 y	 describir	 al	 menos	 5	 sentencias	 para	 cada	 una	 de	 las	
 # operaciones	CRUD (Create,	Read,	Update,	Delete) en	la	BD.	
