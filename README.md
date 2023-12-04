@@ -9,7 +9,7 @@ Se puede localizar en nuestro repositorio  "PD03_04" el dataset original por el 
 
 # El data set:
 El dataset fue rescatado de Kaggle 
-![Alt text](image-1.png)
+![Imagenweb](imagenes/Kaggle.png)
 Se decidio utilizar este archivo en especifico, ya que se notaba bastante ordenado y comprensible, y consideramos que seria facil trabajar con el.
 
 
