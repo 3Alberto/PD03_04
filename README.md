@@ -57,7 +57,21 @@ Debido a que trabajamos con CouchDB y este tiene bastante encapsulamiento y modu
 ![Alt text](imagenes/json2.jpeg)
 
 # d. Descripción	del	modelado	del	dataset	según	la	BD	NoSQL
+Estructura de Documentos JSON:
 
+•	Cada registro del dataset es en un documento JSON individual en CouchDB.
+
+•	Los campos del dataset (como enfermedad, síntomas, edad, género, etc.)
+ son claves en el documento JSON y el valor es el dato asociado a una clave 
+específica.
+
+Diseño de Documentos:
+Cada paciente tiene un documento único que contiene toda su información, 
+incluyendo los síntomas, diagnósticos y demás detalles relevantes.
+
+ID de Documento Único:
+Cada documento en CouchDB tiene un ID único. Utiliza un identificador 
+generado automáticamente.
 # e. Descripción	de	la	BD	NoSQL	y	las	herramientas	que	se	utilizaron.
 La base de datos NoSQL se centra en la relación entre varias enfermedades, los síntomas asociados, y los perfiles de pacientes. Es una herramienta valiosa para el análisis de datos en el campo de la medicina. 
 
