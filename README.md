@@ -93,3 +93,244 @@ Esperamos un momento a que se suban los archivos y luego observamos nuestra base
 
 # g. Definir	 y	 describir	 al	 menos	 5	 sentencias	 para	 cada	 una	 de	 las	
 # operaciones	CRUD (Create,	Read,	Update,	Delete) en	la	BD.	
+Sentencias CRUD aplicadas a nuestra base de datos.
+
+Antes de realizar cualquier sentencia CRUD hay que colocar la siguiente parte de código:
+
+import requests
+from requests.auth import HTTPBasicAuth
+
+Configuración de la conexión a CouchDB
+base_url = 'http://localhost:5984/'
+db_name = 'enfermedades' #(nombre de la base de datos)
+user = 'Admin' #(nombre del Usuario de CouchDB)
+password = 'Tr@nsp0rtar' #(contrasena de CouchDb)
+
+Autenticación
+auth = HTTPBasicAuth(user, password)
+
+Nota: este fragmento código está preparando todo lo necesario para establecer una conexión autenticada con una base de datos CouchDB local, utilizando la autenticación básica HTTP. La conexión en sí (por ejemplo, realizar una solicitud GET o POST) no se realiza en este fragmento de código, pero este sería el setup inicial para cualquier interacción con la base de datos.
+
+# Sentencia CREATE:
+#
+# Crear  un nuevo documento en la base de datos
+#
+data = {
+  "Disease": "Coronavirus",
+  "Fever": "Yes",
+  "Cough": Yes",
+  "Fatigue": "Yes",
+  "Difficulty Breathing": "Yes",
+  "Age": 23,
+  "Gender": "Female",
+  "Blood Pressure": "Low",
+  "Cholesterol Level": "Normal",
+  "Outcome Variable": "Positive"
+}
+create_response = requests.post(f'{base_url}{db_name}', json=data, auth=auth)
+print('Crear:', create_response.json())
+#
+# Crear un nuevo documento con atributos diferentes al resto:
+#
+data={
+  "DiagnosisDate": "2023-12-04",
+  "Symptoms": "Headache",
+  "TreatmentPlan": "Medication and Rest",
+  "FollowUpRequired": “true”,
+  "Doctor": "Dr. Smith",
+  "ClinicLocation": "Downtown Medical Center"
+}
+create_response = requests.post(f'{base_url}{db_name}', json=data, auth=auth)
+print('Crear:', create_response.json())
+#
+# Crear un documento con un atributo distinto de síntomas:
+#
+data={
+    "Disease": "Dengue",
+  "Fever": "Yes",
+  "Cough": No",
+  "Fatigue": "Yes",
+  "Difficulty Breathing": "Yes",
+  "Age": 40,
+  "Gender": "Female",
+  "Blood Pressure": "Low",
+  "Cholesterol Level": "Normal",
+"Alcohol Consumption": "Moderate",
+ "Outcome Variable": "Positive"
+}
+create_response = requests.post(f'{base_url}{db_name}', json=data, auth=auth)
+print('Crear:', create_response.json())
+#
+# Crear un documento con un arreglo de enfermedades:
+#
+data = {
+  "Disease": ["Diabetes”, “Ébola", “Cancer”],
+  "Fever": "Yes",
+  "Cough": No",
+  "Fatigue": "Yes",
+  "Difficulty Breathing": "Yes",
+  "Age": 40,
+  "Gender": "Male",
+  "Blood Pressure": "Hight",
+  "Cholesterol Level": "Hight",
+  "Outcome Variable": "Positive"
+}
+create_response = requests.post(f'{base_url}{db_name}', json=data, auth=auth)
+print('Crear:', create_response.json())
+#
+# Crear un documento sin el atributo "Blood Pressure":
+#
+
+data={
+  "Disease": "Hypothetical Disease",
+  "Fever": "Yes",
+  "Cough": "No",
+  "Fatigue": "Yes",
+  "Difficulty Breathing": "No",
+  "Age": 40,
+  "Gender": "Male",
+  "Cholesterol Level": "High",
+  "Outcome Variable": "Positive"
+}
+create_response = requests.post(f'{base_url}{db_name}', json=data, auth=auth)
+print('Crear:', create_response.json())
+
+#
+# Sentencias Read:
+#
+# Obtener un documento especifico con su ID:
+#
+doc_id = 7f9cd9994bb9f862b1a724af5b0ba92c
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+print('Leer:', response.json())
+#
+# Leer todos los documentos (solo id’s) de la base de datos (usando _all_docs):
+#
+response = requests.get(f'{base_url}{db_name}/_all_docs', auth=auth)
+print('Todos los documentos:', response.json())
+#
+# Leer documentos filtrados por un campo específico (por ejemplo, enfermedad):
+#
+enfermedad = 'Influenza'
+query = {"selector": {"Disease": enfermedad}}
+response = requests.post(f'{base_url}{db_name}/_find', json=query, auth=auth)
+print('Documentos con enfermedad específica:', response.json())
+#
+# Leer documentos de pacientes de un rango de edad específico:
+#
+query = {"selector": {"Age": {"$gte": 20, "$lte": 40}}}
+response = requests.post(f'{base_url}{db_name}/_find', json=query, auth=auth)
+print('Pacientes en un rango de edad:', response.json())
+
+#
+# Leer documentos con un nivel específico de presión arterial:
+#
+blood_pressure = 'High'
+query = {"selector": {"Blood Pressure": blood_pressure}}
+response = requests.post(f'{base_url}{db_name}/_find', json=query, auth=auth)
+print('Documentos con presión arterial alta:', response.json())
+
+#
+# Sentencia Update:
+#
+# Actualizar el campo 'Gender' de un documento específico:
+#
+doc_id = ‘7f9cd9994bb9f862b1a724af5b0bd3e2'
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+doc = response.json()
+doc['Gender'] = 'Male'  # Cambiar el género
+response = requests.put(f'{base_url}{db_name}/{doc_id}', json=doc, auth=auth)
+print('Actualizar género:', response.json())
+#
+# Añadir un nuevo atributo a un documento:
+#
+doc_id = ''7f9cd9994bb9f862b1a724af5b0bd3e2''
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+document = response.json()
+document['Recovery Time'] = '14 days'  # Añadir nuevo atributo
+response = requests.put(f'{base_url}{db_name}/{doc_id}', json=document, auth=auth)
+print('Añadir atributo Recovery Time:', response.json())
+#
+# Actualizar el campo 'Blood Pressure' de un documento:
+#
+doc_id = ''7f9cd9994bb9f862b1a724af5b0bd3e2''
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+doc = response.json()
+doc['Blood Pressure'] = 'Normal'  # Cambiar la presión arterial
+response = requests.put(f'{base_url}{db_name}/{doc_id}', json=doc, auth=auth)
+print('Actualizar presión arterial:', response.json())
+
+#
+# Actualizar múltiples campos en un documento:
+#
+doc_id = '7f9cd9994bb9f862b1a724af5b0bd3e2'
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+doc = response.json()
+doc['Fever'] = 'No'
+doc['Cough'] = 'Yes'
+response = requests.put(f'{base_url}{db_name}/{doc_id}', json=doc, auth=auth)
+print('Actualizar fiebre y tos:', response.json())
+#
+# Actualizar el campo 'Outcome Variable' de un documento:
+#
+doc_id = '7f9cd9994bb9f862b1a724af5b0bd3e2'
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+doc = response.json()
+doc['Outcome Variable'] = 'Negative'  # Cambiar la variable de resultado
+response = requests.put(f'{base_url}{db_name}/{doc_id}', json=doc, auth=auth)
+print('Actualizar variable de resultado:', response.json())
+#
+# Sentencia Delete:
+#
+
+# Eliminar un documento específico por ID:
+#
+doc_id = '7f9cd9994bb9f862b1a724af5b0bd3e2'
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+doc_rev = response.json()[‘5-e650b7bd9b2ef2d88104e1f948737754’]
+response = requests.delete(f'{base_url}{db_name}/{doc_id}?rev={doc_rev}', auth=auth)
+print('Eliminar documento 1:', response.json())
+#
+# Eliminar un atributo especifico de un documento:
+#
+doc_id = ''7f9cd9994bb9f862b1a724af5b0bd3e2''
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+document = response.json()
+if 'Blood Pressure' in document:
+    del document['Blood Pressure']
+    response = requests.put(f'{base_url}{db_name}/{doc_id}', json=document, auth=auth)
+    print('Eliminar atributo Blood Pressure:', response.json())
+else:
+    print('El documento no tiene el atributo Blood Pressure')
+
+
+
+#
+# Eliminar el diseño de un documento:
+#
+design_doc_id = '_design/diseno1'
+response = requests.get(f'{base_url}{db_name}/{design_doc_id}', auth=auth)
+design_doc = response.json()
+if response.status_code == 200:
+    doc_rev = design_doc['_rev']
+    response = requests.delete(f'{base_url}{db_name}/{design_doc_id}?rev={doc_rev}', auth=auth)
+    print('Eliminar diseño de documento:', response.json())
+else:
+    print('Diseño de documento no encontrado o error al obtenerlo.')
+
+#
+# Eliminar la base de datos: 
+#
+response = requests.delete(f'{base_url}{db_name}', auth=auth)
+print('Eliminar base de datos:', response.json())
+#
+# Eliminar los atributos de un documento (excepto 'id' y 'rev')
+#
+doc_id = ''7f9cd9994bb9f862b1a724af5b0bd3e2''
+response = requests.get(f'{base_url}{db_name}/{doc_id}', auth=auth)
+document = response.json()
+#
+# Conservar solo los campos '_id' y '_rev'
+minimal_document = {'_id': document['_id'], '_rev': document['_rev']}
+response = requests.put(f'{base_url}{db_name}/{doc_id}', json=minimal_document, auth=auth)
+print('Dejar documento casi vacío:', response.json())
